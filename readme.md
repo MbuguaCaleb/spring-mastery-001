@@ -9,7 +9,7 @@ once an object is in the context, you can use that Object with Spring Functional
 
 Everything we want managed by the Spring Framework must be Part of the Spring Context
 
-
+A group of instances that we want managed by the
 ```
 ```
 Two ways we can configure a context is
