@@ -1,36 +1,30 @@
 package main;
 
-import beans.MyBean;
 import config.ProjectConfig;
+import model.Product;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import repositories.ProductRepository;
+
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        //declare a context //plain context
-        //i need to specify where the context will be configured as well.
+        try (var c = new AnnotationConfigApplicationContext(ProjectConfig.class)) {
+            ProductRepository productRepository = c.getBean(ProductRepository.class);
 
-        //Two ways we can configure a context is
-        //(a) XML
-        //(b) Annotations---More modern way
+            /*
+            Product p = new Product();
+            p.setName("Bass Guitar");
+            p.setPrice(25);
 
+            productRepository.addProduct(p);
 
-        //instance of the context
-        //the default bean declaration in the spring context is singletonn
-        try (var context = new AnnotationConfigApplicationContext(ProjectConfig.class)) {
-            MyBean b1 = context.getBean(MyBean.class);
-            MyBean b2 = context.getBean(MyBean.class);
-            MyBean b3 = context.getBean(MyBean.class);
-            System.out.println(b1.getText());
-            System.out.println(b2.getText());
-            System.out.println(b3.getText());
+             */
+
+            List<Product> products = productRepository.getProducts();
+            products.forEach(System.out::println);
+
         }
-
-        //Bean unmanaged by the Context
-
-//        MyBean b = new MyBean();
-//        System.out.println(b.getText());
-
-
     }
 }
