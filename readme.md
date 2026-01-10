@@ -295,3 +295,28 @@ Another way of hanldeing mulitiple beans is Qaulifier
 
 
 ```
+
+**SQL FOR PRODUCT Table*8
+
+```
+create  table product(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY ,
+    name VARCHAR(255),
+    price DOUBLE NOT NULL
+);
+
+
+```
+
+**jdbc Template**
+
+
+```
+
+Spring offers us at least JDBC Template, for DB Connection.
+
+A template is that kind of class that elimintes boiler plate code, 
+JDBC Template for example helps us eliminate the boiler plate code of using JDBC,
+JDBC Template is way more easier than JDBC Vanilla.
+
+```

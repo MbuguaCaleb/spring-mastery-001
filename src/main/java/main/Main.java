@@ -1,21 +1,30 @@
 package main;
 
-
-import beans.Cat;
-import beans.Owner;
 import config.ProjectConfig;
+import model.Product;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import repositories.ProductRepository;
+
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        try( var context = new AnnotationConfigApplicationContext(ProjectConfig.class)){
-//            Cat x = context.getBean(Cat.class);
-            Owner o = context.getBean(Owner.class);
+        try (var c = new AnnotationConfigApplicationContext(ProjectConfig.class)) {
+            ProductRepository productRepository = c.getBean(ProductRepository.class);
 
-//            x.setName("Leo");
-//            System.out.println(x);
-            System.out.println(o);
+            /*
+            Product p = new Product();
+            p.setName("Bass Guitar");
+            p.setPrice(25);
+
+            productRepository.addProduct(p);
+
+             */
+
+            List<Product> products = productRepository.getProducts();
+            products.forEach(System.out::println);
+
         }
     }
 }
