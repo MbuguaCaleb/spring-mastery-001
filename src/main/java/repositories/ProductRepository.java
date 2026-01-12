@@ -27,7 +27,7 @@ public class ProductRepository {
     //RowMapper helps us in mapping the ResultSet from JDBC into an Object
     public List<Product> getProducts(){
         String sql= "SELECT * FROM product";
-        return jdbcTemplate.query(sql, new RowMapper<Product>() {
+        return jdbcTemplate.query(sql, new RowMapper<>() {
 
             @Override
             public @Nullable Product mapRow(ResultSet rs, int rowNum) throws SQLException {
